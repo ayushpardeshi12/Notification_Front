@@ -25,7 +25,7 @@ export default function StaffDashboard() {
 
   useEffect(() => {
     // Connect to the Socket.IO server
-    socketRef.current = io("http://localhost:7181", {
+    socketRef.current = window.io("https://notification-back.onrender.com", {
       transports: ["websocket"],
     });
 
