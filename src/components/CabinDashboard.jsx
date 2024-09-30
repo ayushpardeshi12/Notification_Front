@@ -9,7 +9,7 @@ const CabinDashboard = () => {
 
   useEffect(() => {
     // Use the global `io` object from the Socket.IO CDN
-    socketRef.current = window.io("http://localhost:7181", {
+    socketRef.current = window.io("https://notification-back.onrender.com", {
       transports: ["websocket"],
     });
 
@@ -21,13 +21,16 @@ const CabinDashboard = () => {
   const handleAssistanceRequest = async () => {
     try {
       // Send a POST request to the backend to notify staff of the assistance request
-      const response = await fetch("http://localhost:7181/api/assist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cabinName }),
-      });
+      const response = await fetch(
+        "https://notification-back.onrender.com/api/assist",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ cabinName }),
+        }
+      );
 
       if (response.ok) {
         alert("Assistance request sent!");
